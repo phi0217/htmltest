@@ -1,0 +1,762 @@
+@charset "utf-8";
+/*CSS Reset*/
+a,
+body,
+button,
+dd,
+div,
+dl,
+dt,
+h1,
+h2,
+h3,
+i,
+img,
+input,
+li,
+ol,
+p,
+select,
+span,
+textarea,
+ul {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+img {
+  display: block;
+  line-height: 0;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+li {
+  list-style: none;
+}
+input {
+  display: block;
+  outline: medium;
+}
+footer,
+header,
+nav {
+  display: block;
+}
+html {
+  font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
+  background: #FAFAFA;
+  color: #333;
+}
+input {
+  width: 120px;
+  outline: medium;
+  border: 1px solid #d2d8e9;
+  padding: 3px 6px;
+  font-size: 14px;
+  line-height: 20px;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-writing-mode: horizontal-tb;
+  -ms-writing-mode: lr-tb;
+  writing-mode: horizontal-tb;
+  text-rendering: auto;
+  -webkit-transition: box-shadow 0.2s;
+  -webkit-transition: -webkit-box-shadow 0.2s;
+  transition: -webkit-box-shadow 0.2s;
+  transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s, -webkit-box-shadow 0.2s;
+}
+input:focus {
+  border-color: #66afe9;
+}
+/*color*/
+/*main start*/
+.main {
+  position: relative;
+}
+.main .title {
+  height: 30px;
+  background: #f9f7f5;
+  border-bottom: 2px solid #aa9c81;
+  overflow: hidden;
+}
+.main .title h3 {
+  line-height: 30px;
+  padding-left: 15px;
+  color: #666;
+  font-size: 14px;
+  float: left;
+}
+.main .title h3 span {
+  color: #333;
+}
+.main .title .btn {
+  float: right;
+  font-size: 14px;
+  margin-top: 1px;
+  margin-right: 15px;
+}
+.main .title .addNew {
+  margin-right: 30px;
+}
+.main .title .search {
+  background: #FAFAFA;
+  color: #333;
+  margin-right: 15px;
+  border-color: #ccc;
+}
+/*main end*/
+/*input start*/
+.input {
+  padding: 15px;
+  padding-bottom: 10px;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  z-index: 999;
+  display: none;
+}
+.input form {
+  width: 650px;
+  height: auto;
+  background: #f8f7f7;
+  margin: 0 auto;
+  margin-bottom: 80px;
+  padding-bottom: 10px;
+  margin-top: 50px;
+  border-radius: 6px;
+}
+.input form h1 {
+  font: 24px/36px simsun;
+  font-size: 20px;
+  color: #fff;
+  background: #337ab7;
+  padding-left: 8px;
+  position: relative;
+  font-weight: normal;
+  border-radius: 6px 6px 0 0;
+}
+.input form h1 span {
+  float: right;
+  cursor: pointer;
+  font-size: 20px;
+  margin-right: 20px;
+}
+.input ul {
+  padding: 15px;
+}
+.input ul li {
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+.input ul li span {
+  float: left;
+  width: 160px;
+  padding-right: 5px;
+  text-align: right;
+  line-height: 28px;
+  font-family: "微软雅黑";
+  color: #333;
+}
+.input ul li input[type="text"],
+.input ul li select,
+.input ul li textarea {
+  float: left;
+  width: 360px;
+  line-height: 24px;
+  font-family: "微软雅黑";
+  color: #333;
+}
+.input ul li .checkbox {
+  float: left;
+  width: 360px;
+  overflow: hidden;
+}
+.input ul li .item {
+  float: left;
+  width: 180px;
+  padding: 0;
+  overflow: hidden;
+}
+.input ul li input[type="checkbox"] {
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+}
+.input ul li label {
+  font: 14px/24px '';
+  padding-left: 20px;
+  color: #333;
+}
+.input ul li .time {
+  float: left;
+  width: 374px;
+  overflow: hidden;
+  position: relative;
+}
+.input ul li .time input {
+  float: left;
+  width: 150px;
+  margin: 0 5px;
+}
+.input ul li .time span {
+  float: left;
+  font: 14px/32px "";
+  color: #333;
+  width: 20px;
+}
+.input ul li .time input:nth-of-type(2) {
+  float: right;
+}
+.input ul li select {
+  color: #666;
+}
+.input li textarea {
+  border: 1px solid #d2d8e9;
+  padding: 3px 6px;
+  font: 14px/26px "微软雅黑";
+  color: #333;
+  outline: medium;
+}
+.input li textarea:focus {
+  border: 1px solid #66afe9;
+}
+.input ul li select {
+  outline: medium;
+  border: 1px solid #ccc;
+  padding: 3px 6px;
+  font-size: 14px;
+  line-height: 20px;
+  border-radius: 2px;
+  height: 26px;
+  width: 374px;
+}
+.input form .btn {
+  margin-left: 80%;
+}
+.input .btns {
+  border-top: 1px solid #ccc;
+  overflow: hidden;
+  padding-right: 80px;
+  padding-top: 10px;
+}
+.input .btns .btn {
+  float: right;
+  margin: 0 10px;
+}
+.input .btns .submit {
+  background: #337ab7;
+  color: #fff;
+}
+.input h1 span {
+  font-size: 20px;
+  float: right;
+  line-height: 26px;
+  margin-top: 5px;
+  color: #fff;
+  width: 26px;
+  text-align: center;
+}
+.input h1 span:hover {
+  color: #fff;
+  background: #c00;
+}
+/*btn*/
+.btn {
+  display: inline-block;
+  width: auto;
+  text-align: center;
+  padding: 4px 10px;
+  background: #f5f5f5;
+  line-height: 18px;
+  cursor: pointer;
+  outline: medium;
+  border: 0;
+  font-size: 12px;
+  color: #333;
+  border: 1px solid #d6d6d6;
+  font-family: "微软雅黑";
+  white-space: nowrap;
+  border-radius: 4px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e6e6e6));
+  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+}
+/*handle end*/
+/*table*/
+.table-container .table-title {
+  padding: 3px 20px;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  background: #FAFAFA;
+  -webkit-box-shadow: 0 3px 3px #ccc;
+  box-shadow: 0 3px 3px #ccc;
+  margin-bottom: 3px;
+}
+.table {
+  overflow: auto;
+  padding-bottom: 50px;
+  position: relative;
+  font-weight: 300;
+  /*现将table横向滚动条位置撑到第一屏以下，再根据实际情况调整*/
+  min-height: 1000px;
+}
+.table table {
+  cellpadding: 0;
+  cellspacing: 0;
+  border-collapse: collapse;
+}
+table td,
+table th {
+  border: 1px solid #cecece;
+  white-space: nowrap;
+  line-height: 30px;
+  padding: 0 5px;
+  color: #333;
+  cursor: default;
+  border: 0;
+}
+table tr:nth-of-type(odd) {
+  background: #fff;
+}
+table tr:nth-of-type(even) {
+  background: #f9f5f1;
+}
+table tr:nth-of-type(1) {
+  border-bottom: 2px solid #bbb;
+  border-top: 0;
+}
+table th {
+  padding: 0 15px;
+  font-weight: bold;
+}
+table td {
+  text-align: center;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: 1px solid #ccc;
+}
+table input[type="radio"] {
+  display: block;
+  height: 18px;
+  width: 18px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+/*表格数据预览*/
+.preview {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  overflow: auto;
+  padding-top: 50px;
+  padding-bottom: 100p;
+  display: none;
+}
+.preview .panel {
+  background: #fff;
+  width: 800px;
+  margin: 20px auto;
+  border-radius: 6px;
+}
+.preview .panel .panel-head {
+  background: #337ab7;
+  color: #fff;
+  overflow: hidden;
+  border-radius: 6px 6px 0 0;
+}
+.preview .panel .panel-head h1 {
+  float: left;
+  font-size: 20px;
+  line-height: 36px;
+  padding-left: 20px;
+}
+.preview .panel .panel-head button {
+  font-size: 20px;
+  float: right;
+  line-height: 26px;
+  margin-top: 5px;
+  margin-right: 20px;
+  color: #fff;
+  width: 26px;
+  text-align: center;
+  cursor: pointer;
+  outline: medium;
+  background: transparent;
+  border: 0;
+}
+.preview .panel .panel-head button:hover {
+  background: #c00;
+}
+.preview .panel .panel-body {
+  padding: 30px 20px;
+}
+.preview .panel .panel-body ul {
+  overflow: hidden;
+}
+.preview .panel .panel-body ul li {
+  width: 378px;
+  float: left;
+  overflow: hidden;
+  border-bottom: 1px solid #EDEDED;
+  padding: 10px 0;
+}
+.preview .panel .panel-body ul {
+  border: 1px solid #EDEDED;
+  border-bottom: 0;
+}
+.preview .panel .panel-body ul li:nth-of-type(even) {
+  border-left: 1px solid #EDEDED;
+}
+.preview .panel .panel-body ul li span {
+  float: left;
+  width: 140px;
+  text-align: right;
+  padding-right: 20px;
+  font-weight: bold;
+  color: #333;
+  line-height: 20px;
+}
+.preview .panel .panel-body ul li p {
+  float: left;
+  color: #555;
+  line-height: 20px;
+  width: 210px;
+}
+.preview .panel .panel-foot {
+  padding: 10px 20px;
+  border-top: 1px solid #EDEDED;
+  overflow: hidden;
+}
+.preview .panel .panel-foot .btn {
+  float: right;
+}
+/*分页*/
+.pagination {
+  width: 460px;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  margin-left: -230px;
+}
+.pagination input {
+  margin: 0 5px;
+  width: 30px;
+  display: inline-block;
+}
+.pagination .btn {
+  display: inline-block;
+  background: #fff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e6e6e6));
+  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+  color: #0f88eb;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  border: 1px solid #DCDCDC;
+}
+.pagination .btn:hover {
+  background: #EDEDED;
+}
+.pagination span {
+  font-size: 14px;
+  line-height: 30px;
+  color: #333c;
+}
+.pagination .pageNumber {
+  padding: 0 20px;
+}
+/*按钮颜色*/
+.delete {
+  background: #dd524d;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f17a76), to(#dd524d));
+  background-image: linear-gradient(to bottom, #f17a76, #dd524d);
+  color: #fff;
+}
+.addNew {
+  background: #0f88eb;
+  background: -webkit-gradient(linear, left top, left bottom, from(#3eaafb), to(#008af1));
+  background: linear-gradient(to bottom, #3eaafb, #008af1);
+  color: #fff;
+}
+.audit,
+.change,
+.revise,
+.see {
+  background: #337ab7;
+  color: #fff;
+}
+* {
+  text-decoration: none;
+}
+/*header 菜单*/
+.header {
+  height: 50px;
+  background: #373d41;
+  -webkit-box-shadow: 0 -2px 2px 2px #7c7c7c;
+  box-shadow: 0 -2px 2px 2px #7c7c7c;
+  overflow: hidden;
+}
+.header .logo {
+  float: left;
+  width: 80px;
+  height: 50px;
+  background: transparent;
+}
+.header .nav {
+  float: left;
+  overflow: hidden;
+  padding: 0 1px;
+}
+.header .nav li {
+  float: left;
+  color: #fff;
+  font: 16px/50px "";
+  padding: 0 20px;
+  cursor: default;
+}
+.header .nav li:hover {
+  background: #0f88eb;
+}
+.header .message {
+  float: right;
+  overflow: hidden;
+  padding-right: 30px;
+}
+.header .message li {
+  float: left;
+  height: 50px;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0 5px;
+}
+.header .message li img {
+  float: left;
+  width: 26px;
+  height: 26px;
+  margin-top: 12px;
+}
+.header .message li span {
+  float: left;
+  font: 14px/50px "";
+  color: #fff;
+  padding-left: 4px;
+}
+/*菜单面板*/
+.menu {
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 50px;
+  right: 0;
+  background: #fafafa;
+  display: none;
+  color: #333;
+}
+.menu .nav {
+  overflow: hidden;
+  padding: 20px 10px;
+  display: none;
+  position: absolute;
+  background: #fafafa;
+  min-height: 100px;
+  min-width: 400px;
+  border: 1px solid #ccc;
+  border-top: 0;
+}
+.menu .nav .nav-list {
+  float: left;
+  padding: 10px 0px;
+  margin-right: 100px;
+}
+.menu .nav .nav-list:last-of-type {
+  margin-right: 30px;
+}
+.menu .nav .nav-list li {
+  margin-bottom: 10px;
+  border-bottom: 1px solid transparent;
+}
+.menu .nav .nav-list li a {
+  font: 14px/26px "";
+  color: #333333;
+  font-weight: 200;
+}
+.menu .nav .nav-list li:hover {
+  border-bottom: 1px solid #DEDDDC;
+}
+.menu .nav .nav-list li a:hover {
+  color: #0f88eb;
+}
+/*post*/
+.post {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  background: #eee;
+}
+.post .head {
+  height: 40px;
+  -webkit-box-shadow: 0 2px 2px #ddd;
+          box-shadow: 0 2px 2px #ddd;
+  text-align: center;
+}
+.post .content {
+  width: 1200px;
+  margin: 30px auto;
+  overflow: hidden;
+  background: #fff;
+  padding: 20px;
+  height: 500px;
+}
+.post .holder {
+  float: left;
+  width: 200px;
+  height: 500px;
+  border-right: 1px solid #ddd;
+  margin-right: 20px;
+}
+.post .left {
+  float: left;
+  width: 260px;
+  border-right: 1px solid #ddd;
+  height: 500px;
+  padding-right: 20px;
+}
+#tree {
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  width: 260px;
+}
+#tree li {
+  width: 100%;
+  height: 40px;
+  border-bottom: 1px solid #dddddd;
+  overflow: hidden;
+  color: #333;
+  position: relative;
+}
+#tree li:last-of-type {
+  border-bottom: 0;
+}
+#tree li input {
+  float: left;
+}
+#tree li p {
+  float: right;
+}
+#tree li input {
+  width: 20px;
+  height: 20px;
+  margin: 10px 5px;
+  position: absolute;
+  z-index: 99999;
+  left: 0;
+  top: 0;
+}
+#tree li p {
+  line-height: 40px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+#tree li span {
+  width: 30px;
+  line-height: 40px;
+  font-size: 20px;
+  font-weight: 600;
+  padding-right: 5px;
+  display: inline-block;
+  width: 26px;
+  text-align: center;
+}
+#tree .first p {
+  width: 210px;
+}
+#tree .second p {
+  width: 190px;
+}
+#tree .third p {
+  width: 140px;
+}
+#tree .second,
+#tree .third {
+  display: none;
+}
+.post .right {
+  height: 470px;
+  width: 670px;
+  margin-left: 20px;
+  padding-bottom: 30px;
+  border: 1px solid #ddd;
+  float: left;
+  overflow: auto;
+  border-radius: 4px;
+}
+.post .right .item {
+  border-bottom: 1px solid #ddd;
+}
+.post .right .item p {
+  font: 16px/40px '';
+  color: #333;
+  padding-left: 20px;
+  cursor: pointer;
+  background: #EDEDED;
+}
+.post .right .item ul li {
+  overflow: hidden;
+  border-bottom: 1px solid #ddd;
+  padding: 4px 10px;
+  padding-left: 40px;
+}
+.post .right .item ul li:last-of-type {
+  border-bottom: 0;
+}
+.post .right .item ul li:nth-of-type(odd) {
+  background: #f9f5f1;
+}
+.post .right .item ul li input {
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
+  margin-right: 4px;
+}
+.post .right .item ul li span {
+  font: 14px/26px '';
+  color: #333;
+}
+.post .right .btnContainer {
+  overflow: hidden;
+  position: relative;
+}
+.post .right .btn {
+  float: right;
+  margin-top: 30px;
+  margin-right: 60px;
+  margin-bottom: 30px;
+}

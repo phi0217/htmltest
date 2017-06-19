@@ -1,0 +1,417 @@
+<%@page contentType="text/html"%>
+<%@page pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>内部账户</title>
+<link rel="stylesheet" href="/css/common/common.css" />
+<link rel="stylesheet" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+<link rel="stylesheet" href="/css/common/time.css" />
+<script type="text/javascript" src="/js/common/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/js/common/common.js"></script>
+<script type="text/javascript" src="/js/common/time.js"></script>
+	
+</head>
+
+<body>
+	<!--header start-->
+		<div class="header">
+			<div class="logo"></div>
+			<ul class="nav">
+				<!-- <li>菜单栏目-1</li>
+				<li>菜单栏目-2</li>
+				<li>菜单栏目-3</li> -->
+			</ul>
+			<ul class="message">
+				<li>
+					<!-- <img src="../img/admin.png" /> -->
+					<span>用户名</span>
+				</li>
+				<li>
+					<!-- <img src="../img/logout.png" /> -->
+					<span>退出</span>
+				</li>
+			</ul>
+		</div>
+		<div class="menu">
+			<div class="layout">
+				
+			</div>
+		</div>
+	<!--header end-->
+	<div class="main">
+		<div class="title">
+			<h3>
+				当前位置：<span>内部账户 > 内部账户</span>	<span>总共${response.pageInfo.totalItems }条</span>
+			</h3>
+			<button class="btn addNew inputNew">新增</button>
+			<button class="btn update inputUpdate">变更</button>
+			<button class="btn delete inputDrop">注销</button>
+			<button class="btn see">查看</button>
+			<button class="btn search query">搜索</button>
+		</div>
+		<form id="listByPageForm" name="listByPageForm" action="/fund/inneraccount/inneraccount" method="post">
+		<!--table start-->
+		<div class="table-container">
+			<!--table list-->
+			<div class="table">
+				<table>
+					<tr>
+						<th>操作</th>
+						<th>内部账户帐号</th>
+						<th>内部账号名称</th>
+						<th>币种</th>
+						<th>内部账户权限类型</th>
+						<th>内部账户所有者(持有人账号)</th>
+						<th>账户类型</th>
+						<th>机内账户类型</th>
+						<th>会计科目代码</th>
+						<th>会计科目名称</th>
+						<th>会计科目余额方向</th>
+						<th>结转类型</th>
+						<th>透支标志</th>
+						<th>核销类型</th>
+						<th>备注</th>
+						<th>录入人代码</th>
+						<th>录入人姓名</th>
+						<th>录入时间</th>
+						<th>核准人代码</th>
+						<th>核准人姓名</th>
+						<th>核准时间</th>
+						<th>生效状态</th>
+						<th>生效时间</th>
+						<th>开户时间</th>
+						<th>销户时间</th>
+						<th>最近更新序号</th>
+						<th>最近更新时间</th>
+					</tr>
+					<c:forEach items="${response.innerAccountVoList }" var="innerAccount">
+						<tr>
+							<td><input type="radio" name="radio" /></td>
+							<td>${innerAccount.innerAccount }</td>
+							<td>${innerAccount.innerAccountName }</td>
+							<td>${innerAccount.currency }</td>
+							<td data-type="D10003">${innerAccount.innerAccountAuthorityType }</td>
+							<td>${innerAccount.innerAccountOwnership }</td>
+							<td data-type="D10009">${innerAccount.accountType }</td>
+							<td data-type="D10012">${innerAccount.specialAccountType }</td>
+							<td>${innerAccount.subjectCode }</td>
+							<td>${innerAccount.subjectName }</td>
+							<td data-type="D10004">${innerAccount.subjectBalanceDirection }</td>
+							<td data-type="D10005">${innerAccount.balanceTransferType }</td>
+							<td data-type="D10006">${innerAccount.overdraftFlag }</td>
+							<td data-type="D10008">${innerAccount.verifyType }</td>
+							<td>${innerAccount.remark }</td>
+							<td>${innerAccount.inputOperatorCode }</td>
+							<td>${innerAccount.inputOperatorName }</td>
+							<td><fmt:formatDate value="${innerAccount.inputDatetime }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+							<td>${innerAccount.auditOperatorCode }</td>
+							<td>${innerAccount.auditOperatorName }</td>
+							<td><fmt:formatDate value="${innerAccount.auditDatetime }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+							<td data-type="D10013">${innerAccount.effectStatus }</td>
+							<td><fmt:formatDate value="${innerAccount.effectDatetime }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+							<td><fmt:formatDate value="${innerAccount.accountOpenDatetime }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+							<td><fmt:formatDate value="${innerAccount.accountCancelDatetime }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+							<td>${innerAccount.updateSequenceNo }</td>
+							<td><fmt:formatDate value="${innerAccount.updateDatetime }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+						</tr>
+					</c:forEach>
+				</table>
+				<div class="pagination">
+					<button id="prev" class="btn prev">上一页</button>
+					<button id="next" class="btn next">下一页</button>
+					<span class="pageNumber">
+						第<span id="currentPage">${response.pageInfo.currentPage}</span>页
+						／
+						共<span id="totalPage">${response.pageInfo.totalPage }</span>页
+					</span>
+					<span>到</span>
+					<input type="text" id="toCurrentPage" name="currentPage" value="${response.pageInfo.currentPage}" />
+					<span>页</span>
+					<button type="submit" class="btn" id="paegSubmit">确定</button>
+				</div>
+			</div>
+		</div>
+		<!--table end-->
+	</form>
+	</div>
+
+	<!--preview-->
+		<div class="preview">
+			<div class="panel">
+				<div class="panel-head">
+					<h1>预览</h1>
+					<button class="close">×</button>
+				</div>
+				<div class="panel-body">
+					<ul>
+						<!--预览项目将添加到这里-->
+					</ul>
+				</div>
+				<div class="panel-foot">
+					<button class="btn close">关闭</button>
+				</div>
+			</div>
+		</div>
+	<!--preview end-->
+	
+	<!--搜索弹出框开始-->
+	<div class="input" id="search">
+		<form id="queryInnerAccountForm" name="queryInnerAccountForm" action="/fund/inneraccount/inneraccount">
+			<h1>
+				内部账户搜索<span class="close">×</span>
+			</h1>
+			<ul>
+				<li>
+					<span>内部账户账号：</span>
+					<input type="text" id="query_innerAccount" name="innerAccount" value="${innerAccountSearchVo.innerAccount }" />
+				</li>
+				<li>
+					<span>内部账户名称：</span>
+					<input type="text" id="query_innerAccountName" name="innerAccountName" value="${innerAccountSearchVo.innerAccountName }" />
+				</li>
+				<li>
+					<span>内部账户权限类型：</span>
+					<select class="select" id="query_innerAccountAuthorityType" name="innerAccountAuthorityType" data-code="D10003" select-value="${innerAccountSearchVo.innerAccountAuthorityType }">
+						<option value="">--请选择--</option>
+					</select>
+				</li>
+				<li>
+					<span>内部账户所有者(持有人账号)：</span>
+					<input type="text" id="query_innerAccountOwnership" name="innerAccountOwnership" value="${innerAccountSearchVo.innerAccountOwnership }" />
+				</li>
+				<li>
+					<span>币种：</span>
+					<select class="currencySelect" id="query_currency" name="currency" select-value="${innerAccountSearchVo.currencyCode }">
+						<option value="">--请选择--</option>
+					</select>
+				</li>
+				<li>
+					<span>会计科目代码：</span>
+					<input type="text" id="query_subjectCode" name="subjectCode" value="${innerAccountSearchVo.subjectCode }" />
+				</li>
+				<li>
+					<span>会计科目名称：</span>
+					<input type="text" id="query_subjectName" name="subjectName" value="${innerAccountSearchVo.subjectName }" />
+				</li>
+				<li>
+					<span>会计科目余额方向：</span>
+					<select class="select" id="query_subjectBalanceDirection" name="subjectBalanceDirection" data-code="D10004" select-value="${innerAccountSearchVo.subjectBalanceDirection }">
+						<option value="">--请选择--</option>
+					</select>
+				</li>
+				<%-- <li><span>账户余额：</span><input type="text" id="query_innerAccountBalance" name="innerAccountBalance" value="${innerAccountSearchVo.innerAccountBalance }" /></li> --%>
+				<li>
+					<span>结转标志：</span>
+					<select class="select" id="query_balanceTransferType" name="balanceTransferType" data-code="D10005" select-value="${innerAccountSearchVo.balanceTransferType }">
+						<option value="">--请选择--</option>
+					</select>
+				</li>
+				<li>
+					<span>透支标志：</span>
+					<select class="select" id="query_overdraftFlag" name="overdraftFlag" data-code="D10006" select-value="${innerAccountSearchVo.overdraftFlag }">
+						<option value="">--请选择--</option>
+					</select>
+				</li>
+				<li>
+					<span>核销标志：</span>
+					<select class="select" id="query_verifyType" name="verifyType" data-code="D10008" select-value="${innerAccountSearchVo.verifyType }">
+						<option value="">--请选择--</option>
+					</select>
+				</li>
+				<li>
+					<span>录入人代码：</span>
+					<input type="text" id="query_inputOperatorCode" name="inputOperatorCode" value="${innerAccountSearchVo.inputOperatorCode }" />
+				</li>
+				<li>
+					<span>录入人姓名：</span>
+					<input type="text" id="query_inputOperatorName" name="inputOperatorName" value="${innerAccountSearchVo.inputOperatorName }" />
+				</li>
+				<li>
+					<span>核准人代码：</span>
+					<input type="text" id="query_auditOperatorCode" name="auditOperatorCode" value="${innerAccountSearchVo.auditOperatorCode }" />
+				</li>
+				<li>
+					<span>核准人姓名：</span>
+					<input type="text" id="query_auditOperatorName" name="auditOperatorName" value="${innerAccountSearchVo.auditOperatorName }" />
+				</li>
+				<li>
+					<span>录入时间：</span>
+					<div class="time">
+						<input type="text" id="query_inputDatetimeStartTime" name="inputDatetimeStartTime" value="${innerAccountSearchVo.inputDatetimeStartTime }" />
+						<input type="text" id="query_inputDatetimeEndTime" name="inputDatetimeEndTime" value="${innerAccountSearchVo.inputDatetimeEndTime }" />
+					</div>
+				</li>
+				<li>
+					<span>核准时间：</span>
+					<div class="time">
+						<input type="text" id="query_auditDatetimeStartTime" name="auditDatetimeStartTime" value="${innerAccountSearchVo.auditDatetimeStartTime }" />
+						<input type="text" id="query_auditDatetimeEndTime" name="auditDatetimeEndTime" value="${innerAccountSearchVo.auditDatetimeEndTime }" />
+					</div>
+				</li>
+				<li>
+					<span>生效时间：</span>
+					<div class="time">
+						<input type="text" id="query_effectDatetimeStartTime" name="effectDatetimeStartTime" value="${innerAccountSearchVo.effectDatetimeStartTime }" />
+						<input type="text" id="query_effectDatetimeEndTime" name="effectDatetimeEndTime" value="${innerAccountSearchVo.effectDatetimeEndTime }" />
+					</div>
+				</li>
+				<li>
+					<span>开户时间：</span>
+					<div class="time">
+						<input type="text" id="query_accountOpenDatetimeStartTime" name="accountOpenDatetimeStartTime" value="${innerAccountSearchVo.accountOpenDatetimeStartTime }" />
+						<input type="text" id="query_accountOpenDatetimeEndTime" name="accountOpenDatetimeEndTime" value="${innerAccountSearchVo.accountOpenDatetimeEndTime }" />
+					</div>
+				</li>
+				<li>
+					<span>销户时间：</span>
+					<div class="time">
+						<input type="text" id="query_accountCancelDatetimeStartTime" name="accountCancelDatetimeStartTime" value="${innerAccountSearchVo.accountCancelDatetimeStartTime }" />
+						<input type="text" id="query_accountCancelDatetimeEndTime" name="accountCancelDatetimeEndTime" value="${innerAccountSearchVo.accountCancelDatetimeEndTime }" />
+					</div>
+				</li>
+				<li>
+					<span>最近更新时间：</span>
+					<div class="time">
+						<input type="text" id="query_updateDatetimeStartTime" name="updateDatetimeStartTime" value="${innerAccountSearchVo.updateDatetimeStartTime }" />
+						<input type="text" id="query_updateDatetimeEndTime" name="updateDatetimeEndTime" value="${innerAccountSearchVo.updateDatetimeEndTime }" />
+					</div>
+				</li>
+			</ul>
+			<div class="btns">
+				<button class="btn submit" type="submit">搜索</button>
+				<button class="btn close" type="button">取消</button>
+			</div>
+		</form>
+	</div>
+	<!--搜索弹出框结束-->
+
+	<!---------------------------【新增】【录入】弹出框------------------------->
+	<div class="input" id="new">
+		<form id="inputInnerAccountNewForm" name="inputInnerAccountNewForm" action="/fund/inneraccount/inputinneraccountnew" method="post">
+			<h1>
+				内部账户新增录入<span class="close">×</span>
+			</h1>
+			<ul>
+				<li><span>内部账户账号：</span><input type="text" class="innerAccount" id="input_innerAccount_new" name="innerAccount" /></li>
+				<!-- 币种代码 -->
+				<input type="hidden" class="currencyCode" id="input_currencyCode_new" name="currencyCode" readonly="true" />
+				<li>
+					<span>币种：</span>
+					<select class="currencySelect currency" id="input_currency_new" name="currency">
+						<option value="">--请选择--</option>
+					</select>
+				</li>
+				<li><span>币种名称（中文）：</span><input type="text" class="currencyNameCn" id="input_currencyNameCn_new" name="currencyNameCn" disabled="true" /></li>
+				<!-- 会计科目代码 -->
+				<input type="hidden" class="subjectCode" id="input_subjectCode_new" name="subjectCode" />
+				<li><span>会计科目名称：</span><input type="text" class="subjectName" id="input_subjectName_new" name="subjectName" disabled="true" /></li>
+				<li><span>内部账户名称：</span><input type="text" id="input_innerAccountName_new" name="innerAccountName" /></li>
+				<li>
+					<span>内部账户权限类型：</span>
+					<select class="select innerAccountAuthorityType" id="input_innerAccountAuthorityType_new" name="innerAccountAuthorityType" data-code="D10003">
+						<option value="">--请选择--</option>
+					</select>
+				</li>
+				<li><span>内部账户所有者(持有人账号)：</span><input type="text" class="innerAccountOwnership" id="input_innerAccountOwnership_new" name="innerAccountOwnership" /></li>
+				<li>
+					<span>会计科目余额方向：</span>
+					<select class="select" id="input_subjectBalanceDirection_new" name="subjectBalanceDirection" data-code="D10004">
+						<option value="">--请选择--</option>
+					</select>
+				</li>
+				<li>
+					<span>结转标志：</span>
+					<select class="select" id="input_balanceTransferType_new" name="balanceTransferType" data-code="D10005">
+						<option value="">--请选择--</option>
+					</select>
+				</li>
+				<li>
+					<span>透支标志：</span>
+					<select class="select" id="input_overdraftFlag_new" name="overdraftFlag" data-code="D10006">
+						<option value="">--请选择--</option>
+					</select>
+				</li>
+				<li>
+					<span>核销标志：</span>
+					<select class="select" id="input_verifyType_new" name="verifyType" data-code="D10008">
+						<option value="">--请选择--</option>
+					</select>
+				</li>
+				<li>
+					<span>备注：</span>
+					<textarea id="input_remark_new" name="remark"></textarea>
+				</li>
+			</ul>
+			<div class="btns">
+				<button class="btn submit" type="submit">确定</button>
+				<button class="btn close" type="button">取消</button>
+			</div>
+		</form>
+		<div class="inputMask"></div>
+	</div>
+	<!--新增弹出框结束-->
+
+	<!---------------------------【变更】【录入】弹出框------------------------->
+	<div class="input" id="update">
+		<form id="inputInnerAccountUpdateForm" name="inputInnerAccountUpdateForm" action="/fund/inneraccount/inputinneraccountupdate" method="post">
+			<h1>
+				内部账户变更录入<span class="close">×</span>
+			</h1>
+			<ul>
+				<li><span>内部账户账号：</span><input type="text" id="input_innerAccount_update" name="innerAccount" readonly="true"/>
+				<li><span>内部账户名称：</span><input type="text" id="input_innerAccountName_update" name="innerAccountName" /></li>
+				<li>
+					<span>内部账户权限类型：</span>
+					<select class="select innerAccountAuthorityType" id="input_innerAccountAuthorityType_update" name="innerAccountAuthorityType" data-code="D10003">
+						<option value="">--请选择--</option>
+					</select>
+				</li>
+				<li><span>内部账户所有者(持有人账号)：</span><input type="text" class="innerAccountOwnership" id="input_innerAccountOwnership_update" name="innerAccountOwnership" /></li>
+				<li>
+					<span>会计科目余额方向：</span>
+					<select class="select" id="input_subjectBalanceDirection_update"  name="subjectBalanceDirection" data-code="D10004">
+						<option value="">--请选择--</option>
+					</select>
+				</li>
+				<li>
+					<span>结转标志：</span>
+					<select class="select" id="input_balanceTransferType_update" name="balanceTransferType" data-code="D10005">
+						<option value="">--请选择--</option>
+					</select>
+				</li>
+				<li>
+					<span>透支标志：</span>
+					<select class="select" id="input_overdraftFlag_update" name="overdraftFlag" data-code="D10006">
+						<option value="">--请选择--</option>
+					</select>
+				</li>
+				<li>
+					<span>核销标志：</span>
+					<select class="select" id="input_verifyType_update" name="verifyType" data-code="D10008">
+						<option value="">--请选择--</option>
+					</select>
+				</li>
+				<li>
+					<span>备注：</span>
+					<textarea id="input_remark_update" name="remark"></textarea>
+				</li>
+			</ul>
+			<div class="btns">
+				<button class="btn submit" type="submit">确定</button>
+				<button class="btn close" type="button">取消</button>
+			</div>
+		</form>
+	</div>
+	<!--变更弹出框结束-->
+
+	<script type="text/javascript" src="/js/inneraccount/innerAccount.js"></script>
+	<script type="text/javascript" src="/js/inneraccount/common-inneraccount.js"></script>
+</body>
+
+</html>
